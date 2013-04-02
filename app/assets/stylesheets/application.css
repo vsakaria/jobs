@@ -11,3 +11,23 @@
  *= require_self
  *= require_tree .
  */
+
+
+@import url("normalize.css");
+
+body { background-image: url('/assets/bkgd.gif'); }
+
+a { text-decoration: none }
+
+header {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+
+form {  overflow: hidden; margin-bottom: 30px;}
+
+form div {
+  padding: 5px 0;
+  overflow: hidden;
+}
