@@ -1,0 +1,35 @@
+<h1>Listing applicants</h1>
+
+<table>
+  <tr>
+    <th>First name</th>
+    <th>Second name</th>
+    <th>Email</th>
+    <th>Postcode</th>
+    <th>Url</th>
+    <th>Cv</th>
+    <th>Experience</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @applicants.each do |applicant| %>
+  <tr>
+    <td><%= applicant.first_name %></td>
+    <td><%= applicant.second_name %></td>
+    <td><%= applicant.email %></td>
+    <td><%= applicant.postcode %></td>
+    <td><%= applicant.url %></td>
+    <td><%= applicant.cv %></td>
+    <td><%= applicant.experience %></td>
+    <td><%= link_to 'Show', applicant %></td>
+    <td><%= link_to 'Edit', edit_applicant_path(applicant) %></td>
+    <td><%= link_to 'Destroy', applicant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Applicant', new_applicant_path %>

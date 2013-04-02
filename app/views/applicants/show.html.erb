@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>First name:</b>
+  <%= @applicant.first_name %>
+</p>
+
+<p>
+  <b>Second name:</b>
+  <%= @applicant.second_name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @applicant.email %>
+</p>
+
+<p>
+  <b>Postcode:</b>
+  <%= @applicant.postcode %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @applicant.url %>
+</p>
+
+<p>
+  <b>Cv:</b>
+  <%= @applicant.cv %>
+</p>
+
+<p>
+  <b>Experience:</b>
+  <%= @applicant.experience %>
+</p>
+
+
+<%= link_to 'Edit', edit_applicant_path(@applicant) %> |
+<%= link_to 'Back', applicants_path %>
