@@ -5,15 +5,17 @@
 		<%= link_to(image_tag '', :width => 100, :height => 100) %>
 	</div> -->
 	<div class="slogan">
-		<h3>HotSeats</h3>
+		<h2>HotSeats</h2>
 	</div>
 
 
   <div id="user_nav">
 	<% if current_user %>
-		Logged in as <%= @current_user %>
+		Logged in as <%= current_user.email %>		
 
-		<%= link_to "log out", log_out_path %>
+		<%= link_to "log out", destroy_user_session_path %>
+		
+	
 	<% else %>
 		<%= link_to "Sign Up", new_user_registration_path %> or
 		<%= link_to "Log in", user_session_path %>

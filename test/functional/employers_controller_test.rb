@@ -15,6 +15,8 @@ class EmployersControllerTest < ActionController::TestCase
     assert_equal "test@test.com", Employer.first.email
   end
 
+  
+
   # test "should get index" do
   #   get :index
   #   assert_response :success

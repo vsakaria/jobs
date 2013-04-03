@@ -13,17 +13,23 @@
  */
 
 
-@import url("normalize.css");
+/*@import url("normalize.css");*/
 
-body { background-image: url('/assets/bkgd.gif'); }
+body { background-color: #A7CCCC; }
 
 a { text-decoration: none }
 
 header {
   border-bottom: 1px solid #ddd;
   padding: 10px 0;
+  background-color: #A7CCCC; 
 }
 
+.slogan { width: 30px ;
+  margin-left: auto ;
+  margin-right: auto ;}
+
+#user_nav { margin-left: 20px; }
 
 form {  overflow: hidden; margin-bottom: 30px;}
 
@@ -31,3 +37,5 @@ form div {
   padding: 5px 0;
   overflow: hidden;
 }
+
+h2 { font-family: 'Cinzel Decorative', cursive; }

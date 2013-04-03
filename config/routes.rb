@@ -1,15 +1,20 @@
 Jobs::Application.routes.draw do
-  resources :jobs
+  
 
 
-  devise_for :users
+  # devise_for :users
 
   resources :applicants
 
 
   resources :employers
+  resources :jobs  
 
   root :to => 'jobs#index'
+
+  devise_for :users, :controllers => {:registrations => "users"}
+
+  post "user_registration" => "users#create", :as => "user_registration"
 
 
   # The priority is based upon order of creation:
