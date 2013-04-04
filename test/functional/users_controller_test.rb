@@ -16,7 +16,7 @@ class UsersControllerTest < ActionController::TestCase
  test "a user type is created when a user signs up" do    
     assert_equal 0, User.count
     post :create, {:user => {:email => "test@test.com", :password => "password", :role_type => "employer"}}
-    assert User.role_type == "employer"
+    assert User.first.role_type == "employer"
   end
 end
 

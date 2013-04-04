@@ -1,6 +1,24 @@
 class JobsController < ApplicationController
+
+  #before create run authenticate
   # GET /jobs
   # GET /jobs.json
+  before_filter :check_privileges!, :only => [:create] 
+
+  def create
+    @job = Job.new(params[:job])
+
+    respond_to do |format|
+      if @job.save
+        format.html { redirect_to @job, notice: 'Job was successfully created.' }
+        format.json { render json: @job, status: :created, location: @job }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @job.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def index
     @jobs = Job.all
 
@@ -39,19 +57,7 @@ class JobsController < ApplicationController
 
   # POST /jobs
   # POST /jobs.json
-  def create
-    @job = Job.new(params[:job])
-
-    respond_to do |format|
-      if @job.save
-        format.html { redirect_to @job, notice: 'Job was successfully created.' }
-        format.json { render json: @job, status: :created, location: @job }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @job.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  
 
   # PUT /jobs/1
   # PUT /jobs/1.json
@@ -80,4 +86,10 @@ class JobsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def check_privileges!
+    redirect_to root_url, error: 'You cant create a job here buddy' unless current_user.role_type == "employer"
+
+  end
+
 end

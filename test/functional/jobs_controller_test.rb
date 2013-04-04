@@ -1,49 +1,29 @@
 require 'test_helper'
+require "factories/user_factory"
+
+require "test/unit"
+require "mocha/setup"
 
 class JobsControllerTest < ActionController::TestCase
+
+  include Devise::TestHelpers
+
   setup do
-    @job = jobs(:one)
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+  end
+ 
+
+  test "applicant cannot create a job " do
+
+    assert_equal 0, Job.count
+    log_in_applicant
+    post :create, :job => {:category => "Software", :description => "Office shit wanted", :how_to_apply => "A few drinks and a kiss", :location => "Soho Cellar", :position_type => "Dogstyle", :title => "Software Geek" }
+    assert_equal 0, Job.count
+    assert_redirected_to root_url
+  end
+  
+  def log_in_applicant
+    JobsController.any_instance.stubs(:current_user).returns( UserFactory.applicant)
   end
 
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:jobs)
-  end
-
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
-
-  test "should create job" do
-    assert_difference('Job.count') do
-      post :create, job: { category: @job.category, description: @job.description, how_to_apply: @job.how_to_apply, location: @job.location, position_type: @job.position_type, title: @job.title }
-    end
-
-    assert_redirected_to job_path(assigns(:job))
-  end
-
-  test "should show job" do
-    get :show, id: @job
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get :edit, id: @job
-    assert_response :success
-  end
-
-  test "should update job" do
-    put :update, id: @job, job: { category: @job.category, description: @job.description, how_to_apply: @job.how_to_apply, location: @job.location, position_type: @job.position_type, title: @job.title }
-    assert_redirected_to job_path(assigns(:job))
-  end
-
-  test "should destroy job" do
-    assert_difference('Job.count', -1) do
-      delete :destroy, id: @job
-    end
-
-    assert_redirected_to jobs_path
-  end
 end

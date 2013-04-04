@@ -14,23 +14,13 @@ class UsersController < Devise::RegistrationsController
   private
 
   def after_sign_in_path(resource)
-    debugger
-    @user = User.new(params[:resource])
-    if @user.role_type == "employer"
+    if resource.role_type == "employer" 
       role = Employer.create
-
-    elsif params[:role_type] == "applicant"
+    elsif resource.role_type == "applicant"
       role = Applicant.create
     else
-      render :new
-      return
+      redirect_to(new_user_registration_path) and return
     end 
-
-    @user.role = role
-    if @user.save
-      flash[:notice] = "Signed up!"
-      redirect_to @user
-    end
   end
 
 

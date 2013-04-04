@@ -33,6 +33,8 @@ gem "ansi" # makes the output coloured
 gem 'turn' # makes the output nice
 gem "terminal-notifier-guard"
 
+gem "mocha", :require => false
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
