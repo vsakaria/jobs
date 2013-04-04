@@ -1,28 +1,26 @@
-== Welcome to Jobs Application
-  Jobs is a Job advertising application that gives employers an easy, realiable and fast way to find staff.
+= Welcome to Jobs Application
 
-  Written using Ruby on Rails it incoporates and modifys various Gem sets (Devise, Mocha), uses poloymorphic techniques and was written using a Agile TTD appoarach.
+Jobs is a Job advertising application that gives employers an easy, realiable and fast way to find staff.
 
-== Some of the coding features
+Written using Ruby on Rails it incoporates and modifys various Gem sets (Devise, Mocha), uses poloymorphic techniques and was written using a Agile TTD appoarach.
+
+= Some of the coding features
 
 1. We used a based class User which can take two forms, Employer and Applicant, we used poloymorphic assication to accomplish this becuase the attributes of the two  classes classes have quite different attibutes.
 
-=Coding challeges and how we overcame them
+= Coding challeges and how we overcame them
 
-    * Using the Devise registarion create action to create either a Employer or a Applicant using poloymorphism assoication.
-      * We create our own custom controller which inherited from Devise::RegistrationsController.
-      * In the create methid we called on super to deal with the Devise authantication features.
-      * We called a after_sign_in_path Devise helper method and passed it the resource method which returned the authoriased object.
-      * We customised the after_sign_in_path method to create an Employer or Applicant based on the role_type
+== Problem - Devise and Poloymorphism
 
-2. Change directory to <tt>myapp</tt> and start the web server:
-       <tt>cd myapp; rails server</tt> (run with --help for options)
+* Using the Devise registarion create action to create either a Employer or a Applicant using poloymorphism assoication.
 
-3. Go to http://localhost:3000/ and you'll see:
-       "Welcome aboard: You're riding Ruby on Rails!"
+== Solutions
 
-4. Follow the guidelines to start developing your application. You can find
-the following resources handy:
+* We create our own custom controller which inherited from Devise::RegistrationsController.
+* In the create methid we called on super to deal with the Devise authantication features.
+* We called a after_sign_in_path Devise helper method and passed it the resource method which returned the authoriased object.
+* We customised the after_sign_in_path method to create an Employer or Applicant based on the role_type
 
 
+== Problem - Devise and Poloymorphism
 
