@@ -23,5 +23,5 @@ Written using Ruby on Rails it incoporates and modifys various Gem sets (Devise,
 
 
 A reliable and fast way to find staff, jobs site.
-Here I used a number of different OO principles, polymorphic association (PA) to sign in users as a Applicant or Employer. Inheritance to allow Devise to use it's sign method and then complete the sign in using our own PA method in a single Users controller. I also bound both sign in's into a transaction method. Mocking to create tests that checked whether Users could sign in using the combination of Devise sign and my own PA method implementation.
+Polymorphic association (PA) to sign in users as a Applicant or Employer. Inheritance to allow Devise to use it's sign method and then complete the sign in using our own PA method in a single Users controller. I also bound both sign in's into a transaction method. Mocking to create tests that checked whether Users could sign in using the combination of Devise sign and my own PA method implementation.
 
